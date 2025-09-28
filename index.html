@@ -1,0 +1,172 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro Puzzle Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main App Container -->
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">🧩 Micro Puzzles</h1>
+                <div class="header-controls">
+                    <button id="statsBtn" class="icon-btn" title="Stats">📊</button>
+                    <button id="achievementsBtn" class="icon-btn" title="Achievements">🏆</button>
+                    <button id="soundToggle" class="icon-btn" title="Sound">🔊</button>
+                </div>
+            </div>
+            <div class="streak-display">
+                <span class="streak-text">🔥 Streak: <span id="streakCount">0</span> days</span>
+            </div>
+        </header>
+
+        <!-- Main Menu Screen -->
+        <div id="menuScreen" class="screen">
+            <div class="menu-container">
+                <div class="welcome-card">
+                    <h2>Welcome to Micro Puzzles!</h2>
+                    <p>Challenge your mind with quick, fun puzzles</p>
+                </div>
+                
+                <div class="puzzle-packs">
+                    <h3>Puzzle Packs</h3>
+                    <div class="pack-grid">
+                        <div class="pack-card" data-pack="starter">
+                            <div class="pack-icon">🎯</div>
+                            <h4>Starter Pack</h4>
+                            <p>Easy puzzles to get started</p>
+                            <div class="pack-progress">
+                                <span id="starterProgress">0/10</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pack-card locked" data-pack="intermediate">
+                            <div class="pack-icon">🧠</div>
+                            <h4>Brain Teasers</h4>
+                            <p>Intermediate challenges</p>
+                            <div class="pack-progress">
+                                <span id="intermediateProgress">0/15</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pack-card locked" data-pack="expert">
+                            <div class="pack-icon">🔥</div>
+                            <h4>Expert Level</h4>
+                            <p>Ultimate brain challenges</p>
+                            <div class="pack-progress">
+                                <span id="expertProgress">0/20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="dailyPuzzleBtn" class="primary-btn">
+                    📅 Daily Puzzle
+                </button>
+            </div>
+        </div>
+
+        <!-- Puzzle Screen -->
+        <div id="puzzleScreen" class="screen hidden">
+            <div class="puzzle-container">
+                <div class="puzzle-header">
+                    <button id="backBtn" class="secondary-btn">← Back</button>
+                    <div class="puzzle-info">
+                        <span id="puzzleType">Logic Puzzle</span>
+                        <div class="timer">⏱️ <span id="timer">00:00</span></div>
+                    </div>
+                    <button id="hintBtn" class="secondary-btn">💡 Hint</button>
+                </div>
+                
+                <div class="puzzle-content">
+                    <div id="puzzleArea">
+                        <!-- Puzzle content will be dynamically generated here -->
+                    </div>
+                </div>
+                
+                <div class="puzzle-controls">
+                    <div id="answerArea">
+                        <!-- Answer input will be generated based on puzzle type -->
+                    </div>
+                    <button id="submitBtn" class="primary-btn">Check Answer</button>
+                    <button id="skipBtn" class="secondary-btn">Skip Puzzle</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Screen -->
+        <div id="statsScreen" class="screen hidden">
+            <div class="stats-container">
+                <div class="stats-header">
+                    <h2>📊 Your Stats</h2>
+                    <button id="closeStatsBtn" class="close-btn">×</button>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalSolved">0</div>
+                        <div class="stat-label">Puzzles Solved</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="bestStreak">0</div>
+                        <div class="stat-label">Best Streak</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="fastestTime">--:--</div>
+                        <div class="stat-label">Fastest Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="averageTime">--:--</div>
+                        <div class="stat-label">Average Time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements Screen -->
+        <div id="achievementsScreen" class="screen hidden">
+            <div class="achievements-container">
+                <div class="achievements-header">
+                    <h2>🏆 Achievements</h2>
+                    <button id="closeAchievementsBtn" class="close-btn">×</button>
+                </div>
+                <div id="achievementsList" class="achievements-list">
+                    <!-- Achievements will be populated dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div id="successModal" class="modal hidden">
+            <div class="modal-content success-content">
+                <div class="success-icon">🎉</div>
+                <h3 id="successTitle">Great Job!</h3>
+                <p id="successMessage">You solved the puzzle!</p>
+                <div class="success-stats">
+                    <span id="solveTime">Time: 00:45</span>
+                </div>
+                <div class="success-buttons">
+                    <button id="nextPuzzleBtn" class="primary-btn">Next Puzzle</button>
+                    <button id="backToMenuBtn" class="secondary-btn">Back to Menu</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hint Modal -->
+        <div id="hintModal" class="modal hidden">
+            <div class="modal-content">
+                <h3>💡 Hint</h3>
+                <p id="hintText">Here's a helpful hint...</p>
+                <button id="closeHintBtn" class="primary-btn">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
