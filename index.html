@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Main App Container -->
     <div id="app">
-        <!-- Header -->
         <header class="header">
             <div class="header-content">
                 <h1 class="app-title">🧩 Micro Puzzles</h1>
@@ -26,7 +23,6 @@
             </div>
         </header>
 
-        <!-- Main Menu Screen -->
         <div id="menuScreen" class="screen">
             <div class="menu-container">
                 <div class="welcome-card">
@@ -66,13 +62,10 @@
                     </div>
                 </div>
 
-                <button id="dailyPuzzleBtn" class="primary-btn">
-                    📅 Daily Puzzle
-                </button>
+                <button id="dailyPuzzleBtn" class="primary-btn">📅 Daily Puzzle</button>
             </div>
         </div>
 
-        <!-- Puzzle Screen -->
         <div id="puzzleScreen" class="screen hidden">
             <div class="puzzle-container">
                 <div class="puzzle-header">
@@ -85,22 +78,17 @@
                 </div>
                 
                 <div class="puzzle-content">
-                    <div id="puzzleArea">
-                        <!-- Puzzle content will be dynamically generated here -->
-                    </div>
+                    <div id="puzzleArea"></div>
                 </div>
                 
                 <div class="puzzle-controls">
-                    <div id="answerArea">
-                        <!-- Answer input will be generated based on puzzle type -->
-                    </div>
+                    <div id="answerArea"></div>
                     <button id="submitBtn" class="primary-btn">Check Answer</button>
                     <button id="skipBtn" class="secondary-btn">Skip Puzzle</button>
                 </div>
             </div>
         </div>
 
-        <!-- Stats Screen -->
         <div id="statsScreen" class="screen hidden">
             <div class="stats-container">
                 <div class="stats-header">
@@ -128,20 +116,16 @@
             </div>
         </div>
 
-        <!-- Achievements Screen -->
         <div id="achievementsScreen" class="screen hidden">
             <div class="achievements-container">
                 <div class="achievements-header">
                     <h2>🏆 Achievements</h2>
                     <button id="closeAchievementsBtn" class="close-btn">×</button>
                 </div>
-                <div id="achievementsList" class="achievements-list">
-                    <!-- Achievements will be populated dynamically -->
-                </div>
+                <div id="achievementsList" class="achievements-list"></div>
             </div>
         </div>
 
-        <!-- Success Modal -->
         <div id="successModal" class="modal hidden">
             <div class="modal-content success-content">
                 <div class="success-icon">🎉</div>
@@ -157,7 +141,6 @@
             </div>
         </div>
 
-        <!-- Hint Modal -->
         <div id="hintModal" class="modal hidden">
             <div class="modal-content">
                 <h3>💡 Hint</h3>
