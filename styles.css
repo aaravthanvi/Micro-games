@@ -1,6 +1,3 @@
-/* styles.css */
-
-/* CSS Variables for easy theming */
 :root {
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
@@ -19,7 +16,6 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -40,7 +36,6 @@ body {
     flex-direction: column;
 }
 
-/* Header Styles */
 .header {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -103,7 +98,6 @@ body {
     color: var(--warning-color);
 }
 
-/* Screen Management */
 .screen {
     flex: 1;
     padding: 2rem;
@@ -122,7 +116,19 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Menu Screen Styles */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+    40%, 43% { transform: translate3d(0, -15px, 0); }
+    70% { transform: translate3d(0, -7px, 0); }
+    90% { transform: translate3d(0, -2px, 0); }
+}
+
 .menu-container {
     max-width: 800px;
     margin: 0 auto;
@@ -206,7 +212,6 @@ body {
     color: var(--text-secondary);
 }
 
-/* Button Styles */
 .primary-btn {
     background: var(--secondary-gradient);
     color: white;
@@ -245,7 +250,6 @@ body {
     background: rgba(102, 126, 234, 0.05);
 }
 
-/* Puzzle Screen Styles */
 .puzzle-container {
     max-width: 800px;
     margin: 0 auto;
@@ -397,9 +401,8 @@ body {
     color: white;
 }
 
-/* Stats Screen */
-.stats-container {
-    max-width: 600px;
+.stats-container, .achievements-container {
+    max-width: 800px;
     margin: 0 auto;
     background: var(--bg-white);
     border-radius: var(--border-radius);
@@ -407,7 +410,7 @@ body {
     padding: 2rem;
 }
 
-.stats-header {
+.stats-header, .achievements-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -461,23 +464,6 @@ body {
     font-weight: 600;
 }
 
-/* Achievements Screen */
-.achievements-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: var(--bg-white);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    padding: 2rem;
-}
-
-.achievements-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
 .achievements-list {
     display: grid;
     gap: 1rem;
@@ -512,7 +498,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* Modal Styles */
 .modal {
     position: fixed;
     top: 0;
@@ -579,80 +564,24 @@ body {
     max-width: none;
 }
 
-/* Responsive Design */
+.bounce {
+    animation: bounce 1s ease-out;
+}
+
 @media (max-width: 768px) {
-    .header {
-        padding: 1rem;
-    }
-    
-    .app-title {
-        font-size: 1.4rem;
-    }
-    
-    .screen {
-        padding: 1rem;
-    }
-    
-    .pack-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .puzzle-header {
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-    
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .success-buttons {
-        flex-direction: column;
-    }
-    
-    .modal-content {
-        padding: 1.5rem;
-    }
+    .header { padding: 1rem; }
+    .app-title { font-size: 1.4rem; }
+    .screen { padding: 1rem; }
+    .pack-grid { grid-template-columns: 1fr; }
+    .puzzle-header { flex-wrap: wrap; gap: 1rem; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .success-buttons { flex-direction: column; }
+    .modal-content { padding: 1.5rem; }
 }
 
 @media (max-width: 480px) {
-    .header-content {
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-    
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .pattern-grid {
-        max-width: 250px;
-    }
-    
-    .pattern-cell {
-        width: 50px;
-        height: 50px;
-    }
-}
-
-/* Loading animations */
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-}
-
-.loading {
-    animation: pulse 2s infinite;
-}
-
-/* Success animations */
-@keyframes bounce {
-    0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
-    40%, 43% { transform: translate3d(0, -15px, 0); }
-    70% { transform: translate3d(0, -7px, 0); }
-    90% { transform: translate3d(0, -2px, 0); }
-}
-
-.bounce {
-    animation: bounce 1s ease-out;
+    .header-content { flex-wrap: wrap; gap: 1rem; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .pattern-grid { max-width: 250px; }
+    .pattern-cell { width: 50px; height: 50px; }
 }
